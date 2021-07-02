@@ -2,7 +2,7 @@
  
 Requirements:
 Apache, 
-MySQL
+MySQL, 
 PHP 8.0.7, 
 Composer, 
 Symfony 5.3.2
