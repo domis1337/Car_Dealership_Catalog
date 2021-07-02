@@ -1,16 +1,16 @@
 # Car_Dealership_Catalog
  
 Requirements:
-Apache
+Apache, 
 MySQL
-PHP 8.0.7
-Composer
+PHP 8.0.7, 
+Composer, 
 Symfony 5.3.2
 
 Packages installed:
-Doctrine
-MakerBundle
-Annotations
+Doctrine, 
+MakerBundle, 
+Annotations, 
 Twig
 
 To set up the database, please run the SQL script \car_dealership_catalog\mysqldatabasesql.sql
