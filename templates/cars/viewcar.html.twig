@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}More Info{% endblock %}
+
+{% block body %}
+
+<div>
+	<h1>More Info</h1>
+	
+	{% for c in car %}
+	
+	ID: <br>
+	{{ c.id }}<br><br>
+	Brand: <br>
+	{{ c.brand }}<br><br>
+	Model: <br>
+	{{ c.model }}<br><br>
+	Fuel Type: <br>
+	{{ c.fueltype }}<br><br>
+	Fuel Tank Capacity: <br>
+	{{ c.fueltankcapacity }} L<br><br>
+	Max Speed: <br>
+	{{ c.maxspeed }} KM/H<br><br>
+	Price: <br>
+	{{ c.price / 100}}.{{ c.price % 100}} EUR<br><br>
+	Color: <br>
+	{{ c.color }}<br><br>
+	Description: <br>
+	{{ c.description }}<br><br>
+	
+	<table>
+		<tr>
+			<th>
+				<button type="button" onClick="location.href='{{ path('list_cars') }}'">Back to catalog</button>
+			</th>
+			<th>
+				<form action="{{ path('edit_car_form') }}" method="get">
+					<input type="hidden" id="ecarid" name="ecarid" value="{{ c.id }}">
+					<input type="submit" value="Edit">
+				</form>
+			</th>			
+		</tr>
+	</table>
+	{% endfor %}
+</div>
+
+{% endblock %}

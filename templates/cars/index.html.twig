@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Car Dealership Catalog{% endblock %}
+
+{% block body %}
+<style>
+	table, th, td { border: 1px solid black; }
+</style>
+
+<div>
+    <h1>Car Dealership Catalog</h1>
+	<form action="{{ path('list_cars') }}" method="get">
+		Search for Brand: 
+		<input type="text" id="sfield" name="sfield" value="{{ searchValue }}">
+		<input type="submit" value="Search">
+		Sort by:
+		<select class="custom-select" name="svalue" id="svalue">
+								<option value="" selected disabled hidden>
+								<option value="0">ID</option>
+								<option value="1">Brand</option>
+								<option value="2">Model</option>
+								<option value="3">Fuel Type</option>
+								<option value="4">Fuel Tank Capacity</option>
+								<option value="5">Max Speed</option>
+								<option value="6">Price</option>
+								<option value="7">Color</option>
+		</select>
+		<input type="submit" value="Submit">
+	</form>
+
+	<table>
+		<tr>
+			<th width="100">ID</th>
+			<th width="150">BRAND</th>
+			<th width="150">MODEL</th>
+			<th width="100">FUEL TYPE</th>
+			<th width="110">FUEL TANK CAPACITY</th>
+			<th width="60">MAX SPEED</th>
+			<th width="150">PRICE</th>
+			<th width="100">COLOR</th>
+			<th><button type="button" onClick="location.href='{{ path('create_car_form') }}'">Add new car</button></th>
+			
+		</tr>
+	</table>
+	
+    {% for car in cars %}
+	
+	<table>
+		<tr>
+			<th width="100">{{ car.id }}</th>
+			<th width="150">{{ car.brand }}</th>
+			<th width="150">{{ car.model }}</th>
+			<th width="100">{{ car.fueltype }}</th>
+			<th width="110">{{ car.fueltankcapacity }} L</th>
+			<th width="60">{{ car.maxspeed }} KM/H</th>
+			<th width="150">{{ car.price / 100}}.{{ car.price % 100}} EUR</th>
+			<th width="100">{{ car.color }}</th>
+			<th>
+				<form action="{{ path('view_car') }}" method="get">
+					<input type="hidden" id="vcarid" name="vcarid" value="{{ car.id }}">
+					<input type="submit" value="More Info">
+				</form>
+			</th>
+			<th>
+				<form action="{{ path('edit_car_form') }}" method="get">
+					<input type="hidden" id="ecarid" name="ecarid" value="{{ car.id }}">
+					<input type="submit" value="Edit">
+				</form>
+			</th>
+			<th>
+				<form action="{{ path('update_car_price') }}" method="get">
+					<input type="hidden" id="ocarid" name="ocarid" value="{{ car.id }}">
+					<input type="number" min="100" required="required" id="oprice" name="oprice" value="">
+					<input type="submit" value="Update Car Price Only">
+				</form>
+			</th>
+			<th>
+				<form action="{{ path('delete_car') }}" method="get">
+					<input type="hidden" id="dcarid" name="dcarid" value="{{ car.id }}">
+					<input type="submit" style="background-color:red" value="Delete">
+				</form>
+			</th>			
+		</tr>
+	</table>	
+	
+    {% endfor %}
+</div>
+
+{% endblock %}

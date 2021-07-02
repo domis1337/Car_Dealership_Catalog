@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Added car{% endblock %}
+
+{% block body %}
+
+<div>
+	<h1>Added a new {{ brand }} car with id "{{ car }}".</h1>
+	<button type="button" onClick="location.href='{{ path('list_cars') }}'">Back to catalog</button>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit car{% endblock %}
+
+{% block body %}
+
+<div>
+	<h1>Edit car</h1>
+	
+	{% for c in car %}
+	<form action="{{ path('edited_car') }}" method="get">
+		<input type="hidden" id="eid" name="eid" value="{{ c.id }}">
+		Brand: <br>
+		<input type="text" required="required" id="ebrand" name="ebrand" value="{{ c.brand }}"><br>
+		Model: <br>
+		<input type="text" required="required" id="emodel" name="emodel" value="{{ c.model }}"><br>
+		Fuel Type: <br>
+		{% if c.fueltype == "Diesel" %}
+			<select class="custom-select" name="eftype" id="eftype">
+									<option selected value="1">Diesel</option>
+									<option value="2">Petrol</option>
+			</select><br>
+		{% else %}
+			<select class="custom-select" name="eftype" id="eftype">
+									<option value="1">Diesel</option>
+									<option selected value="2">Petrol</option>
+			</select><br>
+		{% endif %}
+		Fuel Tank Capacity (Litres): <br>
+		<input type="number" min="1" required="required" id="eftcapacity" name="eftcapacity" value="{{ c.fueltankcapacity }}"><br>
+		Max Speed (KM/H): <br>
+		<input type="number" min="1" required="required" id="emspeed" name="emspeed" value="{{ c.maxspeed }}"><br>
+		Price (EUR): <br>
+		<input type="number" min="100" required="required" id="eprice" name="eprice" value="{{ c.price }}"> Please write the price*100. (Example: for 12300.00 EUR write 1230000, for 1 write 100)<br>
+		Color: <br>
+		<input type="text" required="required" id="ecolor" name="ecolor" value="{{ c.color }}"><br>
+		Description (Max 2000 characters): <br>
+		<input type="textarea" id="edescription" name="edescription" value="{{ c.description }}"><br>
+		<input type="submit" value="Save">
+	</form>
+	{% endfor %}
+</div>
+
+{% endblock %}

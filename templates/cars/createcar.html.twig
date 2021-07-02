@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add new car{% endblock %}
+
+{% block body %}
+
+<div>
+	<h1>Add new car</h1>
+	<form action="{{ path('created_car') }}" method="get">
+		Brand: <br>
+		<input type="text" required="required" id="abrand" name="abrand" value=""><br>
+		Model: <br>
+		<input type="text" required="required" id="amodel" name="amodel" value=""><br>
+		Fuel Type: <br>
+		<select class="custom-select" name="aftype" id="aftype">
+								<option value="1">Diesel</option>
+								<option value="2">Petrol</option>
+		</select><br>
+		Fuel Tank Capacity (Litres): <br>
+		<input type="number" min="1" required="required" id="aftcapacity" name="aftcapacity" value=""><br>
+		Max Speed (KM/H): <br>
+		<input type="number" min="1" required="required" id="amspeed" name="amspeed" value=""><br>
+		Price (EUR): <br>
+		<input type="number" min="100" required="required" id="aprice" name="aprice" value=""> Please write the price*100. (Example: for 12300.00 EUR write 1230000, for 1 write 100)<br>
+		Color: <br>
+		<input type="text" required="required" id="acolor" name="acolor" value=""><br>
+		Description (Max 2000 characters): <br>
+		<input type="textarea" id="adescription" name="adescription" value=""><br>
+		<input type="submit" value="Add">
+	</form>
+</div>
+
+{% endblock %}
